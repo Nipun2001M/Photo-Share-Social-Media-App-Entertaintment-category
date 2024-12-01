@@ -13,8 +13,8 @@ import {
 } from "react-native";
 
 const favorite = () => {
-  const [imageName, setImageName] = useState<string>(""); // For image name input
-  const [uploadedImage, setUploadedImage] = useState<any>(null); // To store the uploaded image
+  const [imageName, setImageName] = useState<string>(""); 
+  const [uploadedImage, setUploadedImage] = useState<any>(null); 
 
   const handleUploadImage = () => {
     Alert.alert("Upload", "Image upload functionality not implemented yet.");

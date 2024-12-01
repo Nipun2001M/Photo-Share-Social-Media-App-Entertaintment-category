@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
   },
   searchButtonText: {
     fontSize: 24,
-    color: "#DE3163", // Updated icon color
+    color: "#DE3163",
   },
   scrollContent: {
     padding: 16,

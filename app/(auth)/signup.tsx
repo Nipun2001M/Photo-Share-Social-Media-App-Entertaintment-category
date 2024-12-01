@@ -12,13 +12,11 @@ import {
 } from "react-native";
 
 const Signup = () => {
-  // State for inputs
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  // State for validation errors
   const [errors, setErrors] = useState({
     name: "",
     email: "",
@@ -27,10 +25,8 @@ const Signup = () => {
   });
 
   const handleSignup = () => {
-    // Reset errors
     setErrors({ name: "", email: "", password: "", confirmPassword: "" });
 
-    // Basic validation
     let isValid = true;
 
     if (!name) {
@@ -84,9 +80,10 @@ const Signup = () => {
     }
 
     if (isValid) {
-      // Proceed with signup logic (API call, navigation, etc.)
       console.log("SignUp Successful");
-      // router.push("/home"); // Uncomment to navigate after successful signup
+      router.push(`/home?username=${name}`);
+
+      
     }
   };
 
