@@ -1,5 +1,6 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
+import { useLikeContext } from "@/contexts/LikeContext";
 
 const ImageCard = ({
   creator,
@@ -16,7 +17,17 @@ const ImageCard = ({
     ? require("../../assets/icons/heartrose.png")
     : require("../../assets/icons/heart.png");
 
-  const staticHeartIcon = require("../../assets/icons/download.png"); // Static icon for second heart
+  const staticHeartIcon = require("../../assets/icons/download.png"); 
+  const { incrementLike, decrementLike } = useLikeContext();
+
+   const toggleLike = () => {
+     if (Liked) {
+       decrementLike();
+     } else {
+       incrementLike();
+     }
+     setLiked(!Liked);
+   };
 
   return (
     <View style={{ flexDirection: "column" }}>
@@ -34,7 +45,7 @@ const ImageCard = ({
           marginHorizontal: 20,
         }}
       >
-        <TouchableOpacity onPress={() => setLiked(!Liked)}>
+        <TouchableOpacity  onPress={toggleLike}>
           <Image style={{ height: 25, width: 25 }} source={heartIcon} />
         </TouchableOpacity>
 

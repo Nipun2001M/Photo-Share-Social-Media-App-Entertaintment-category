@@ -1,4 +1,5 @@
 import ImageCard from "@/components/ui/ImageCard";
+import { LikeProvider, useLikeContext } from "@/contexts/LikeContext";
 import { useRoute } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import {
@@ -33,6 +34,9 @@ const home = () => {
   const [hits, setHits] = useState<Hit[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("Nature"); 
   const [loading, setLoading] = useState<boolean>(false);
+    const heartIcon = require("../../assets/icons/heartwhite.png")
+
+
 
   const fetchData = async () => {
     setLoading(true); 
@@ -48,58 +52,67 @@ const home = () => {
       setLoading(false); 
     }
   };
+    const { likeCount } = useLikeContext();
+
 
   useEffect(() => {
     fetchData();
   }, [searchTerm]);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Image
-          style={styles.logo}
-          source={require("../../assets/images/logo.png")} 
-        />
 
-        <View style={styles.greetingContainer}>
-          <Text style={styles.greetingText}>Dear {username || "Guest"}</Text>
-          <Text style={styles.welcomeText}>Welcome to MeowLens</Text>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.header}>
+          <Image
+            style={styles.logo}
+            source={require("../../assets/images/logo.png")}
+          />
+
+          <View style={styles.greetingContainer}>
+            <Text style={styles.greetingText}>Dear {username || "Guest"}</Text>
+            <Text style={styles.welcomeText}>Welcome to MeowLens</Text>
+          </View>
         </View>
-      </View>
 
-      <View style={styles.searchContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Search for images..."
-          placeholderTextColor="#DE3163"
-          value={searchTerm}
-          onChangeText={(text) => setSearchTerm(text)} 
-        />
+        <View style={styles.searchContainer}>
+          <TextInput
+            style={styles.input}
+            placeholder="Search for images..."
+            placeholderTextColor="#DE3163"
+            value={searchTerm}
+            onChangeText={(text) => setSearchTerm(text)}
+          />
 
-      
-      </View>
-
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        <View style={styles.innerContainer}>
-          {loading ? (
-            <Text>Loading...</Text> 
-          ) : hits.length > 0 ? (
-            <View>
-              {hits.map((hit) => (
-                <ImageCard
-                  key={hit.id}
-                  creator={hit.user}
-                  downloads={`${(hit.downloads / 1000).toFixed(1)}k`} 
-                  imageURL={hit.webformatURL}
-                />
-              ))}
-            </View>
-          ) : (
-            <Text>No results found for {searchTerm}</Text> 
-          )}
+          <TouchableOpacity style={styles.floatingButton}>
+            <TouchableOpacity>
+              <Image style={{ height: 25, width: 25 }} source={heartIcon} />
+            </TouchableOpacity>
+            <Text style={styles.floatingButtonText}>{likeCount}</Text>
+          </TouchableOpacity>
         </View>
-      </ScrollView>
-    </SafeAreaView>
+
+        <ScrollView contentContainerStyle={styles.scrollContent}>
+          <View style={styles.innerContainer}>
+            {loading ? (
+              <Text>Loading...</Text>
+            ) : hits.length > 0 ? (
+              <View>
+                {hits.map((hit) => (
+                  <ImageCard
+                    key={hit.id}
+                    creator={hit.user}
+                    downloads={`${(hit.downloads / 1000).toFixed(1)}k`}
+                    imageURL={hit.webformatURL}
+                  />
+                ))}
+              </View>
+            ) : (
+              <Text>No results found for {searchTerm}</Text>
+            )}
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+
   );
 };
 
@@ -123,7 +136,6 @@ const styles = StyleSheet.create({
   },
   greetingContainer: {
     flexDirection: "column",
-    
   },
   greetingText: {
     color: "black",
@@ -139,10 +151,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 20,
+
     paddingHorizontal: 16,
     marginBottom: 20,
-    
   },
   input: {
     height: 50,
@@ -171,12 +182,41 @@ const styles = StyleSheet.create({
   scrollContent: {
     padding: 16,
     fontFamily: "SpaceMono",
+    marginTop: 0,
+    paddingTop: 0,
   },
   innerContainer: {
     flex: 1,
     flexDirection: "column",
     alignItems: "center",
     fontFamily: "SpaceMono",
+  },
+  floatingButton: {
+    flexDirection:"row",
+    
+    
+    position: "absolute",
+    bottom: 105, 
+    right: 24, 
+    backgroundColor: "#DE3163", 
+    borderRadius: 25,
+    width: 60,
+    height: 30,
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 1000, 
+    shadowColor: "#000", 
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 3,
+    elevation: 5, 
+  },
+  floatingButtonText: {
+    color: "white",
+    fontSize: 17,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginLeft: 10,
   },
 });
 

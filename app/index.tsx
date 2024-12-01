@@ -1,3 +1,4 @@
+import { LikeProvider } from "@/contexts/LikeContext";
 import { Link, router } from "expo-router";
 import React from "react";
 import {
@@ -14,42 +15,44 @@ import {
 
 export default function HomeScreen() {
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        <View style={styles.innerContainer}>
-          <Text
-            style={{
-              fontFamily: "SpaceMono",
-              fontSize: 40,
-              color: "#808080",
-              fontWeight: "400",
-            }}
-          >
-            MeowLens
-          </Text>
-          <Image
-            style={styles.Logo}
-            source={require("../assets/images/logo.png")}
-          />
-          <Text
-            style={{
-              fontFamily: "SpaceMono",
-              fontSize: 20,
-              margin: 5,
-              color: "#808080",
-            }}
-          >
-            Snap, Share, and Treasure Every Moment.
-          </Text>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => router.push("/signup")}
-          >
-            <Text style={styles.inputbuttontext}>Continue With E-mail</Text>
-          </TouchableOpacity>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+   
+      <SafeAreaView style={styles.container}>
+        <ScrollView contentContainerStyle={styles.scrollContent}>
+          <View style={styles.innerContainer}>
+            <Text
+              style={{
+                fontFamily: "SpaceMono",
+                fontSize: 40,
+                color: "#808080",
+                fontWeight: "400",
+              }}
+            >
+              MeowLens
+            </Text>
+            <Image
+              style={styles.Logo}
+              source={require("../assets/images/logo.png")}
+            />
+            <Text
+              style={{
+                fontFamily: "SpaceMono",
+                fontSize: 20,
+                margin: 5,
+                color: "#808080",
+              }}
+            >
+              Snap, Share, and Treasure Every Moment.
+            </Text>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => router.push("/signup")}
+            >
+              <Text style={styles.inputbuttontext}>Continue With E-mail</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+
   );
 }
 
