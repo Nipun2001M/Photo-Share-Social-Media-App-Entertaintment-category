@@ -113,7 +113,7 @@ const Signin = () => {
 
           <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.button} onPress={handleLogin}>
-              <Text style={styles.inputbuttontext}>Login</Text>
+              <Text style={styles.inputbuttontext}>Loginn</Text>
             </TouchableOpacity>
           </View>
 
