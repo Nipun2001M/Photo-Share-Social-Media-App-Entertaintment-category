@@ -166,7 +166,7 @@ const Signup = () => {
 
           <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.button} onPress={handleSignup}>
-              <Text style={styles.inputbuttontext}>SignUp</Text>
+              <Text style={styles.inputbuttontext}>Sign-up</Text>
             </TouchableOpacity>
           </View>
 
@@ -248,7 +248,7 @@ const styles = StyleSheet.create({
   inputbuttontext: {
     fontWeight: "300",
     color: "white",
-    fontSize: 24,
+    fontSize: 22,
   },
   Logo: {
     height: 50,
