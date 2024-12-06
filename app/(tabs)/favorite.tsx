@@ -36,7 +36,6 @@ const favorite = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* Header */}
       <View style={styles.header}>
         <Image
           style={styles.logo}
@@ -47,10 +46,8 @@ const favorite = () => {
         </View>
       </View>
 
-      {/* Content */}
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.innerContainer}>
-          {/* Image Name Input */}
           <TextInput
             style={styles.input}
             placeholder="Enter image name"
@@ -58,7 +55,6 @@ const favorite = () => {
             onChangeText={(text) => setImageName(text)}
           />
 
-          {/* Upload Image */}
           <TouchableOpacity
             style={styles.uploadContainer}
             onPress={handleUploadImage}
@@ -76,7 +72,6 @@ const favorite = () => {
             )}
           </TouchableOpacity>
 
-          {/* Submit Button */}
           <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
             <Text style={styles.submitButtonText}>Upload</Text>
           </TouchableOpacity>

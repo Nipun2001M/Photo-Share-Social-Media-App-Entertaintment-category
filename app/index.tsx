@@ -71,13 +71,13 @@ const styles = StyleSheet.create({
   innerContainer: {
     flex: 1,
     flexDirection: "column",
-    alignItems: "center", // Center children horizontally
+    alignItems: "center", 
     marginTop: 20,
     fontFamily: "SpaceMono",
   },
   inputContainer: {
-    width: "100%", // Ensures the input container spans full width
-    paddingHorizontal: 16, // Add some horizontal padding for aesthetics
+    width: "100%", 
+    paddingHorizontal: 16, 
     fontFamily: "SpaceMono",
     alignItems: "center",
     justifyContent: "center",

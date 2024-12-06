@@ -24,7 +24,7 @@ export const LikeProvider = ({ children }: { children: React.ReactNode }) => {
 export const useLikeContext = () => {
   const context = useContext(LikeContext);
   if (!context) {
-    throw new Error("useLikeContext must be used within a LikeProvider");
+    throw new Error("useLikeContext error");
   }
   return context;
 };

@@ -44,7 +44,6 @@ const TabLayout = () => {
           },
         }}
       >
-        {/* Home Tab */}
         <Tabs.Screen
           name="home"
           options={{
@@ -60,7 +59,6 @@ const TabLayout = () => {
           }}
         />
 
-        {/* Favorite Tab */}
         <Tabs.Screen
           name="favorite"
           options={{
